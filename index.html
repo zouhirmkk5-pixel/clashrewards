@@ -24,8 +24,6 @@ input{padding:18px;width:80%;max-width:450px;border-radius:15px;border:none;marg
 input:focus{outline:none;box-shadow:0 0 20px #facc15;}
 .btn{padding:18px 45px;background:#facc15;color:#0f172a;font-weight:bold;border-radius:15px;border:none;cursor:pointer;font-size:18px;transition:0.3s;box-shadow:0 7px 20px rgba(0,0,0,0.4);}
 .btn:hover{background:#eab308;transform: translateY(-3px);box-shadow:0 9px 25px rgba(0,0,0,0.5);}
-.videoBox{max-width:400px;margin:auto;background:#111;padding:20px;border-radius:12px;text-align:center;display:none;}
-.videoBox img{width:100%;border-radius:10px;margin-top:15px;}
 .timer{font-size:28px;color:#f87171;margin-bottom:25px;font-weight:bold;}
 .stats{margin:40px 0;font-size:24px;color:#3b82f6;text-shadow:2px 2px 8px #000;}
 .counter-num{display:inline-block;width:28px;animation:roll 0.3s ease-in-out;}
@@ -41,18 +39,6 @@ footer{padding:30px;font-size:16px;color:#9ca3af;}
 </head>
 <body>
 
-<!-- الصورة + خطوات TikTok يظهر فقط لمستخدمي TikTok -->
-<div id="videoPage" class="videoBox">
-  <img src="tutorial-thumbnail.jpg" alt="Tutorial Thumbnail">
-  <p>
-    Step 1️⃣ Tap the 3 dots (⋯)<br>
-    Step 2️⃣ Open in Browser<br>
-    Step 3️⃣ View your rewards below 👇
-  </p>
-</div>
-
-<!-- Landing Page -->
-<div id="landingContent">
 <header>🏆 Clash Royale Chest Rewards</header>
 <div class="container">
 <h1>🎁 Claim Your Chest Rewards Now!</h1>
@@ -71,12 +57,6 @@ footer{padding:30px;font-size:16px;color:#9ca3af;}
 <footer>&copy; 2026 Clash Royale Rewards. All rights reserved.</footer>
 
 <script>
-// --- TikTok detection ---
-var ua = navigator.userAgent.toLowerCase();
-if(ua.includes("tiktok")){
-  document.getElementById("videoPage").style.display="block"; // TikTok users see image + steps
-}
-
 // --- Countdown 1 hour ---
 let totalTime = 60*60;
 const countdownEl = document.getElementById('countdown');
