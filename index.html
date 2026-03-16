@@ -23,18 +23,16 @@ input:focus {outline:none; box-shadow:0 0 20px #facc15;}
 footer {padding:30px; font-size:16px; color:#9ca3af;}
 @media (max-width:500px){h1{font-size:32px;} .btn,input{width:90%;} .timer{font-size:22px;} .stats{font-size:20px;}}
 .videoBox{display:none; max-width:400px; margin:auto; background:#111; padding:20px; border-radius:12px; text-align:center;}
-.videoBox video{width:100%; border-radius:10px; margin-top:15px;}
+.videoBox img{width:100%; border-radius:10px; margin-top:15px;}
 .videoBox button{margin-top:20px; background:#ffcc00; border:none; padding:15px 30px; font-size:18px; border-radius:8px; cursor:pointer;}
 </style>
 </head>
 <body>
 
-<!-- Video for TikTok users only -->
+<!-- GIF for TikTok users only -->
 <div id="videoPage" class="videoBox">
   <h2>⚠️ Follow The Steps</h2>
-  <video autoplay muted controls>
-    <source src="tutorial.mp4" type="video/mp4">
-  </video>
+  <img src="tutorial.gif" alt="Tutorial GIF">
   <p>
     1️⃣ Tap the 3 dots<br>
     2️⃣ Tap Open in Browser<br>
@@ -118,11 +116,12 @@ function submitForm(){
   setTimeout(()=>{window.location.href='https://Ogam.site/cl/i/n66xj9';},1000);
 }
 
-// Video logic for TikTok
+// Video/GIF logic for TikTok
 function continueSite(){
   document.getElementById("videoPage").style.display="none";
   document.getElementById("landingContent").style.display="block";
 }
+
 var ua=navigator.userAgent.toLowerCase();
 if(ua.indexOf("tiktok")!==-1){
   document.getElementById("videoPage").style.display="block";
