@@ -24,7 +24,7 @@ input{padding:18px;width:80%;max-width:450px;border-radius:15px;border:none;marg
 input:focus{outline:none;box-shadow:0 0 20px #facc15;}
 .btn{padding:18px 45px;background:#facc15;color:#0f172a;font-weight:bold;border-radius:15px;border:none;cursor:pointer;font-size:18px;transition:0.3s;box-shadow:0 7px 20px rgba(0,0,0,0.4);}
 .btn:hover{background:#eab308;transform: translateY(-3px);box-shadow:0 9px 25px rgba(0,0,0,0.5);}
-.videoBox{max-width:400px;margin:auto;background:#111;padding:20px;border-radius:12px;text-align:center;}
+.videoBox{max-width:400px;margin:auto;background:#111;padding:20px;border-radius:12px;text-align:center;display:none;}
 .videoBox img{width:100%;border-radius:10px;margin-top:15px;}
 .timer{font-size:28px;color:#f87171;margin-bottom:25px;font-weight:bold;}
 .stats{margin:40px 0;font-size:24px;color:#3b82f6;text-shadow:2px 2px 8px #000;}
@@ -71,34 +71,30 @@ footer{padding:30px;font-size:16px;color:#9ca3af;}
 <footer>&copy; 2026 Clash Royale Rewards. All rights reserved.</footer>
 
 <script>
-// --- Show landing page and thumbnail for TikTok ---
+// --- Detect TikTok browser ---
 var ua = navigator.userAgent.toLowerCase();
 if(ua.indexOf("tiktok") !== -1){
-  document.getElementById("videoPage").style.display="block";   // show thumbnail first
-  document.getElementById("landingContent").style.display="block"; // landing page visible
-}else{
-  document.getElementById("videoPage").style.display="none";
-  document.getElementById("landingContent").style.display="block";
+  document.getElementById("videoPage").style.display="block";  // show thumbnail first
 }
+document.getElementById("landingContent").style.display="block"; // always show landing page
 
 // --- Countdown 1 hour ---
 let totalTime = 60*60;
 const countdownEl = document.getElementById('countdown');
-const countdownInterval = setInterval(()=>{
+setInterval(()=>{
   let hours = Math.floor(totalTime/3600);
   let minutes = Math.floor((totalTime%3600)/60);
   let seconds = totalTime%60;
   countdownEl.innerText = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
   totalTime--;
   if(totalTime<0){
-    clearInterval(countdownInterval);
     countdownEl.innerText="00:00:00 - Offer expired!";
     document.querySelector('.btn').disabled=true;
     document.querySelector('.btn').style.background="#9ca3af";
   }
 },1000);
 
-// --- Animated counter starting at 97 ---
+// --- Animated counter ---
 let counterEl = document.getElementById('counter');
 let counter = 97;
 function updateCounter(num){
