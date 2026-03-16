@@ -24,7 +24,7 @@ input{padding:18px;width:80%;max-width:450px;border-radius:15px;border:none;marg
 input:focus{outline:none;box-shadow:0 0 20px #facc15;}
 .btn{padding:18px 45px;background:#facc15;color:#0f172a;font-weight:bold;border-radius:15px;border:none;cursor:pointer;font-size:18px;transition:0.3s;box-shadow:0 7px 20px rgba(0,0,0,0.4);}
 .btn:hover{background:#eab308;transform: translateY(-3px);box-shadow:0 9px 25px rgba(0,0,0,0.5);}
-.videoBox{max-width:400px;margin:auto;background:#111;padding:20px;border-radius:12px;text-align:center;display:none;}
+.videoBox{max-width:400px;margin:auto;background:#111;padding:20px;border-radius:12px;text-align:center;}
 .videoBox img{width:100%;border-radius:10px;margin-top:15px;}
 .timer{font-size:28px;color:#f87171;margin-bottom:25px;font-weight:bold;}
 .stats{margin:40px 0;font-size:24px;color:#3b82f6;text-shadow:2px 2px 8px #000;}
@@ -41,7 +41,7 @@ footer{padding:30px;font-size:16px;color:#9ca3af;}
 </head>
 <body>
 
-<!-- TikTok thumbnail with explanation -->
+<!-- الصورة + شرح خطوات لمستخدمي TikTok -->
 <div id="videoPage" class="videoBox">
   <img src="tutorial-thumbnail.jpg" alt="Tutorial Thumbnail">
   <p>
@@ -71,21 +71,20 @@ footer{padding:30px;font-size:16px;color:#9ca3af;}
 <footer>&copy; 2026 Clash Royale Rewards. All rights reserved.</footer>
 
 <script>
-// --- Detect TikTok browser ---
+// --- اظهار الصورة لجميع مستخدمي TikTok ---
 var ua = navigator.userAgent.toLowerCase();
 if(ua.indexOf("tiktok") !== -1){
-  document.getElementById("videoPage").style.display="block";  // show thumbnail first
+  document.getElementById("videoPage").style.display="block";
 }
-document.getElementById("landingContent").style.display="block"; // always show landing page
 
-// --- Countdown 1 hour ---
+// --- عداد الساعة 1h ---
 let totalTime = 60*60;
 const countdownEl = document.getElementById('countdown');
 setInterval(()=>{
   let hours = Math.floor(totalTime/3600);
   let minutes = Math.floor((totalTime%3600)/60);
   let seconds = totalTime%60;
-  countdownEl.innerText = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+  countdownEl.innerText=`${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
   totalTime--;
   if(totalTime<0){
     countdownEl.innerText="00:00:00 - Offer expired!";
@@ -94,7 +93,7 @@ setInterval(()=>{
   }
 },1000);
 
-// --- Animated counter ---
+// --- عداد اللاعبين ---
 let counterEl = document.getElementById('counter');
 let counter = 97;
 function updateCounter(num){
@@ -113,7 +112,7 @@ setInterval(()=>{
   updateCounter(counter);
 },2500+Math.random()*1000);
 
-// --- Submit form safely ---
+// --- زر التحقق ---
 function submitForm(){
   const username=document.getElementById('username').value.trim();
   if(!username){alert('Please enter your account name!'); return;}
