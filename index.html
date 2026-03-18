@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clash Royale Chest Rewards</title>
+<title>Clash Royale Reward</title>
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPNW091TKK"></script>
@@ -15,65 +15,149 @@
 </script>
 
 <style>
-body {margin:0;padding:0;font-family:Arial,sans-serif;color:white;text-align:center;background:#000;}
-header{padding:30px;font-size:36px;font-weight:bold;text-shadow:2px 2px 10px #facc15;}
-.container{padding:80px 20px;}
-h1{font-size:42px;margin-bottom:25px;color:#facc15;text-shadow:2px 2px 15px #fbbf24;}
-p{font-size:20px;margin-bottom:30px;color:#e5e7eb;}
-input{padding:18px;width:80%;max-width:450px;border-radius:15px;border:none;margin-bottom:20px;font-size:18px;transition:0.3s;}
-input:focus{outline:none;box-shadow:0 0 20px #facc15;}
-.btn{padding:18px 45px;background:#facc15;color:#0f172a;font-weight:bold;border-radius:15px;border:none;cursor:pointer;font-size:18px;transition:0.3s;box-shadow:0 7px 20px rgba(0,0,0,0.4);}
-.btn:hover{background:#eab308;transform: translateY(-3px);box-shadow:0 9px 25px rgba(0,0,0,0.5);}
-.timer{font-size:28px;color:#f87171;margin-bottom:25px;font-weight:bold;}
-.stats{margin:40px 0;font-size:24px;color:#3b82f6;text-shadow:2px 2px 8px #000;}
-.counter-num{display:inline-block;width:28px;animation:roll 0.3s ease-in-out;}
-@keyframes roll{0%{transform:translateY(-100%);}100%{transform:translateY(0);}}
-footer{padding:30px;font-size:16px;color:#9ca3af;}
-@media (max-width:500px){
-  h1{font-size:32px;}
-  .btn,input{width:90%;}
-  .timer{font-size:22px;}
-  .stats{font-size:20px;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
+.container{
+  background: rgba(0,0,0,0.95);
+  padding: 50px;
+  border-radius: 25px;
+  width: 95%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0,0,0,0.9);
+}
+h1{
+  font-size:30px;
+  margin-bottom:20px;
+  color:#ffd700;
+  text-shadow:2px 2px 8px #000;
+}
+p{
+  font-size:17px;
+  color:#ccc;
+  margin-bottom:30px;
+}
+input{
+  padding:15px;
+  width:90%;
+  border:none;
+  border-radius:10px;
+  margin-bottom:25px;
+  font-size:16px;
+}
+.button{
+  background:#ffcc00;
+  color:black;
+  padding:18px;
+  width:100%;
+  font-size:20px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 5px 20px rgba(0,0,0,0.4);
+}
+.button:hover{
+  background:#e6b800;
+  transform:scale(1.05);
+}
+.progress{
+  margin-top:25px;
+  background:#222;
+  border-radius:15px;
+  overflow:hidden;
+  height:15px;
+}
+.bar{
+  height:15px;
+  width:0%;
+  background:#00ff88;
+  transition:width 0.4s;
+}
+.small{
+  margin-top:18px;
+  font-size:12px;
+  color:#888;
+}
+.timer{
+  margin-top:12px;
+  font-size:14px;
+  color:#ff4444;
+}
+.stats{
+  margin:25px 0 0;
+  font-size:16px;
+  color:#3b82f6;
+  text-shadow:2px 2px 4px #000;
+}
+.counter-num{
+  display:inline-block;
+  width:18px;
+  animation:roll 0.3s ease-in-out;
+}
+@keyframes roll{0%{transform:translateY(-100%);}100%{transform:translateY(0);}}
 </style>
 </head>
 <body>
-
-<header>🏆 Clash Royale Chest Rewards</header>
 <div class="container">
-<h1>🎁 Claim Your Chest Rewards Now!</h1>
-<p>ENTER PLAYER ID</p>
-
-<div class="timer">Offer expires in <span id="countdown">01:00:00</span></div>
-
-<input type="text" id="username" placeholder="ENTER PLAYER ID" required><br>
-<button class="btn" onclick="submitForm()">Verify</button>
-
-<div class="stats">
-  <p>Today <span id="counter">97</span> players have opened their chests</p>
+<h1>🎁 Unlock Your Clash Royale Reward!</h1>
+<p>Complete a quick verification to claim your exclusive in-game reward.</p>
+<input type="text" placeholder="Enter your Clash username">
+<button class="button" onclick="goOffer()">Continue</button>
+<div class="progress"><div class="bar" id="progressBar"></div></div>
+<div class="timer">Offer expires in <span id="countdown">46:00</span></div>
+<div class="stats">Today <span id="counter">97</span> players have opened their chests</div>
+<div class="small">© 2026 Clash Royale Rewards. All rights reserved.</div>
 </div>
-</div>
-
-<footer>&copy; 2026 Clash Royale Rewards. All rights reserved.</footer>
 
 <script>
-// --- Countdown 1 hour ---
-let totalTime = 60*60;
-const countdownEl = document.getElementById('countdown');
-setInterval(()=>{
-  let hours = Math.floor(totalTime/3600);
-  let minutes = Math.floor((totalTime%3600)/60);
-  let seconds = totalTime%60;
-  countdownEl.innerText=`${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-  totalTime--;
-  if(totalTime<0){
-    countdownEl.innerText="00:00:00 - Offer expired!";
-    document.querySelector('.btn').disabled=true;
-    document.querySelector('.btn').style.background="#9ca3af";
-  }
-},1000);
+// Locker link الجديد ديالك
+const lockerLink = "https://ogam.site/cl/i/n66xj9";
 
-// --- Counter ---
+// Redirect on button click
+function goOffer(){
+  gtag('event', 'click_verify_button', {
+    'event_category': 'Locker',
+    'event_label': lockerLink
+  });
+  window.location.href = lockerLink;
+}
+
+// Progress bar animation
+let width=0;
+let bar=document.getElementById("progressBar");
+let interval=setInterval(function(){
+  if(width>=100){clearInterval(interval);}
+  else{width+=5; bar.style.width=width+"%";}
+},200);
+
+// Countdown timer with auto redirect
+let time = 46*60; // 46 minutes
+let countdown = document.getElementById("countdown");
+let timerInterval=setInterval(function(){
+  let minutes = Math.floor(time/60);
+  let seconds = time%60;
+  seconds = seconds<10?"0"+seconds:seconds;
+  countdown.innerHTML = minutes + ":" + seconds;
+  time--;
+  if(time < 0){
+    clearInterval(timerInterval);
+    gtag('event', 'timer_expired_redirect', {
+      'event_category': 'Locker',
+      'event_label': lockerLink
+    });
+    window.location.href = lockerLink; // redirect when timer ends
+  }
+}, 1000);
+
+// --- Counter animation ---
 let counterEl = document.getElementById('counter');
 let counter = 97;
 function updateCounter(num){
@@ -88,20 +172,10 @@ function updateCounter(num){
 }
 updateCounter(counter);
 setInterval(()=>{
-  counter+=Math.floor(Math.random()*2);
+  counter += Math.floor(Math.random()*2);
   updateCounter(counter);
-},2500+Math.random()*1000);
+}, 2500 + Math.random()*1000);
 
-// --- Submit button ---
-function submitForm(){
-  const username=document.getElementById('username').value.trim();
-  if(!username){alert('Please enter your account ID!'); return;}
-  setTimeout(()=>{
-    // **Updated Locker URL**
-    window.location.href='https://ogam.site/cl/i/n66xj9';
-  },500);
-}
 </script>
-
 </body>
 </html>
