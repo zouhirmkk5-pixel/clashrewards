@@ -1,181 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Mirrored from be22.site/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Mar 2026 16:46:40 GMT -->
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clash Royale Reward</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Continue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NPNW091TKK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-NPNW091TKK');
-</script>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
-body{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-}
-.container{
-  background: rgba(0,0,0,0.95);
-  padding: 50px;
-  border-radius: 25px;
-  width: 95%;
-  max-width: 400px;
-  text-align: center;
-  box-shadow: 0 0 50px rgba(0,0,0,0.9);
-}
-h1{
-  font-size:30px;
-  margin-bottom:20px;
-  color:#ffd700;
-  text-shadow:2px 2px 8px #000;
-}
-p{
-  font-size:17px;
-  color:#ccc;
-  margin-bottom:30px;
-}
-input{
-  padding:15px;
-  width:90%;
-  border:none;
-  border-radius:10px;
-  margin-bottom:25px;
-  font-size:16px;
-}
-.button{
-  background:#ffcc00;
-  color:black;
-  padding:18px;
-  width:100%;
-  font-size:20px;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-  box-shadow:0 5px 20px rgba(0,0,0,0.4);
-}
-.button:hover{
-  background:#e6b800;
-  transform:scale(1.05);
-}
-.progress{
-  margin-top:25px;
-  background:#222;
-  border-radius:15px;
-  overflow:hidden;
-  height:15px;
-}
-.bar{
-  height:15px;
-  width:0%;
-  background:#00ff88;
-  transition:width 0.4s;
-}
-.small{
-  margin-top:18px;
-  font-size:12px;
-  color:#888;
-}
-.timer{
-  margin-top:12px;
-  font-size:14px;
-  color:#ff4444;
-}
-.stats{
-  margin:25px 0 0;
-  font-size:16px;
-  color:#3b82f6;
-  text-shadow:2px 2px 4px #000;
-}
-.counter-num{
-  display:inline-block;
-  width:18px;
-  animation:roll 0.3s ease-in-out;
-}
-@keyframes roll{0%{transform:translateY(-100%);}100%{transform:translateY(0);}}
-</style>
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gif-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .gif-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #fe2c55, #ff6b6b);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(254, 44, 85, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.96);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(254, 44, 85, 0.4); }
+            50% { box-shadow: 0 4px 40px rgba(254, 44, 85, 0.7); }
+            100% { box-shadow: 0 4px 20px rgba(254, 44, 85, 0.4); }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-<h1>🎁 Unlock Your Clash Royale Reward!</h1>
-<p>Complete a quick verification to claim your exclusive in-game reward.</p>
-<input type="text" placeholder="Enter your Clash username">
-<button class="button" onclick="goOffer()">Continue</button>
-<div class="progress"><div class="bar" id="progressBar"></div></div>
-<div class="timer">Offer expires in <span id="countdown">46:00</span></div>
-<div class="stats">Today <span id="counter">97</span> players have opened their chests</div>
-<div class="small">© 2026 Clash Royale Rewards. All rights reserved.</div>
-</div>
-
-<script>
-// Locker link الجديد ديالك
-const lockerLink = "https://ogam.site/cl/i/n66xj9";
-
-// Redirect on button click
-function goOffer(){
-  gtag('event', 'click_verify_button', {
-    'event_category': 'Locker',
-    'event_label': lockerLink
-  });
-  window.location.href = lockerLink;
-}
-
-// Progress bar animation
-let width=0;
-let bar=document.getElementById("progressBar");
-let interval=setInterval(function(){
-  if(width>=100){clearInterval(interval);}
-  else{width+=5; bar.style.width=width+"%";}
-},200);
-
-// Countdown timer with auto redirect
-let time = 46*60; // 46 minutes
-let countdown = document.getElementById("countdown");
-let timerInterval=setInterval(function(){
-  let minutes = Math.floor(time/60);
-  let seconds = time%60;
-  seconds = seconds<10?"0"+seconds:seconds;
-  countdown.innerHTML = minutes + ":" + seconds;
-  time--;
-  if(time < 0){
-    clearInterval(timerInterval);
-    gtag('event', 'timer_expired_redirect', {
-      'event_category': 'Locker',
-      'event_label': lockerLink
-    });
-    window.location.href = lockerLink; // redirect when timer ends
-  }
-}, 1000);
-
-// --- Counter animation ---
-let counterEl = document.getElementById('counter');
-let counter = 97;
-function updateCounter(num){
-  counterEl.innerHTML='';
-  let strNum=num.toString();
-  for(let i=0;i<strNum.length;i++){
-    let span=document.createElement('span');
-    span.className='counter-num';
-    span.innerText=strNum[i];
-    counterEl.appendChild(span);
-  }
-}
-updateCounter(counter);
-setInterval(()=>{
-  counter += Math.floor(Math.random()*2);
-  updateCounter(counter);
-}, 2500 + Math.random()*1000);
-
-</script>
+    <div class="container">
+        <div class="gif-wrapper">
+            <img src="images/548511907.gif" alt="">
+        </div>
+        <a href="r.html" class="cta-btn">Continue</a>
+    </div>
 </body>
+
+<!-- Mirrored from be22.site/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Mar 2026 16:46:41 GMT -->
 </html>
